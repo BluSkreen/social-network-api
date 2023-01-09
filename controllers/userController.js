@@ -70,8 +70,8 @@ module.exports = {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $set: req.body },
-                { runValidators: true, new: true }    
-            )
+                { runValidators: true, new: true }
+            );
             if (user) {
                 return res.status(200).json(user);
             } else {
@@ -89,9 +89,9 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $addToSet: { friends: req.params.friendsId }},
-                { runValidators: true, new: true }    
-            )
+                { $addToSet: { friends: req.params.friendsId } },
+                { runValidators: true, new: true }
+            );
             if (user) {
                 return res.status(200).json(user);
             } else {
@@ -107,9 +107,9 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: req.params.friendsId }},
-                { runValidators: true, new: true }    
-            )
+                { $pull: { friends: req.params.friendsId } },
+                { runValidators: true, new: true }
+            );
             if (user) {
                 return res.status(200).json(user);
             } else {
