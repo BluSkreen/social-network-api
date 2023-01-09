@@ -14,7 +14,7 @@ const userSchema = new Schema(
             required: true,
             index: true,
             unique: true,
-            match: `/^\w+@\w+\.\w+$/`,
+            match: /^\w+@\w+\.\w+$/,
             // match: `/^\w[\w\d\.-_]{0,30}@\w{2,}[\w-]*\w\.\w{2,}/`,
         },
         thoughts: [
