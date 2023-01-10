@@ -18,7 +18,21 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now(),
-            get: (timestamp) => new Date(timestamp).toTimeString(),
+            get: (timestamp) => {
+                let date = "";
+                if((new Date(timestamp).getDate()) % 10  === 1) {
+                    date = `${new Date(timestamp).getDate()}st`
+                } else if((new Date(timestamp).getDate()) % 10  === 2) {
+                    date = `${new Date(timestamp).getDate()}nd`
+                } else if((new Date(timestamp).getDate()) % 10  === 3) {
+                    date = `${new Date(timestamp).getDate()}rd`
+                } else {
+                    date = `${new Date(timestamp).getDate()}th`
+                }
+                let fullDate = new Date(timestamp).toString().split(" ");
+                let time = new Date(timestamp).toLocaleTimeString('en-US').split(/\s*(?::| )\s*/);
+                return `${fullDate[1]} ${date}, ${fullDate[3]} at ${time[0]}:${time[1]} ${time[3]}`;
+            },
         },
     },
     {

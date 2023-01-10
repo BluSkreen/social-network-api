@@ -82,14 +82,14 @@ module.exports = {
         }
     },
 
-    //    /api/user/:userId/friends/:friendsId
+    //    /api/users/:userId/friends/:friendId
 
     // add a friend
     async addFriend(req, res) {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $addToSet: { friends: req.params.friendsId } },
+                { $addToSet: { friends: req.params.friendId } },
                 { runValidators: true, new: true }
             );
             if (user) {
@@ -107,7 +107,7 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: req.params.friendsId } },
+                { $pull: { friends: req.params.friendId } },
                 { runValidators: true, new: true }
             );
             if (user) {
